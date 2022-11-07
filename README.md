@@ -2,18 +2,35 @@
 
 ## 構成図
 
-![1](https://user-images.githubusercontent.com/4577575/163385988-51ca7147-8fc4-41cb-b14d-6d4dfeda0b8d.png)
+![1](https://user-images.githubusercontent.com/4577575/199650605-3ca61383-ffe5-4cf2-b4c5-cc7c47284fe2.png)
 
 ## Terraform
 
-Kubernetesのクラスターを作成し、ノードを2つ作成する。
+Kubernetesのクラスターをマルチリージョンで作成し、Akamai GTMとEdgeDNSを利用して負荷分散をする。
 
 
 ```sh
 .
 ├── README.md
-├── lke.tf クラスターの作成
-├── outputs.tf 必要情報の表示
-├── terraform.tf プロバイダーの指定
-└── variables.tf 変数の指定
+├── edgedns # Edge DNSを証明書の構成情報
+│   ├── README.me
+│   ├── acme.tf
+│   ├── edgedns.tf
+│   ├── outputs.tf
+│   ├── terraform.tf
+│   └── variables.tf
+├── gtm # Akamai GTMの構成情報
+│   ├── gtm.tf
+│   ├── terraform.tf
+│   └── variables.tf
+├── kubectl # kubectlにて利用する構成情報
+│   ├── README.me
+│   ├── deployment.yaml
+│   └── service.yaml
+└── lke # Linode Kubernetesの構成情報 
+    ├── README.md
+    ├── lke.tf
+    ├── outputs.tf
+    ├── terraform.tf
+    └── variables.tf
 ```
